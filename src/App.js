@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Header from "./components/Header";
+import Customize from "./components/Customize";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  const [ingredients] = useState
+  ({
+    basil: false,
+    cheese: false,
+    mushroom: false,
+    olive: false,
+    pineapple: false,
+    tomato: false,
+    bananaPepper: false,
+    sausage: false,
+    onion: false,
+    greenPepper: false,
+    pepperoni: false
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Customize
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+            />
+          </Route>
+          <Route path="/checkout">
+            
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
